@@ -1,0 +1,20 @@
+.animated-alert {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+
+  &.show {
+    max-height: 100px;
+    opacity: 1;
+  }
+
+  &.with-animation {
+    transform: translateY(20px);
+    transition: transform 0.4s ease, max-height 0.5s ease, opacity 0.5s ease;
+
+    &.show {
+      transform: translateY(0);
+    }
+  }
+}

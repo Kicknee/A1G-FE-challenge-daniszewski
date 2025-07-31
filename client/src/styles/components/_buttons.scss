@@ -1,0 +1,13 @@
+@use "../abstracts//variables" as *;
+
+button.btn-primary {
+  background: $primary-gradient;
+  background-size: 130% auto;
+  border: none;
+  font-weight: 600;
+  transition: background-position 0.5s ease-out;
+
+  &:hover {
+    background-position: right center;
+  }
+}

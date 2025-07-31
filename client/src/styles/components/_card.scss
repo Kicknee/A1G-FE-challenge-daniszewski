@@ -1,0 +1,11 @@
+@use "../abstracts//variables" as *;
+
+.order-card {
+  background-color: $bg-card;
+  width: clamp(370px, 390px, 100vw);
+  height: clamp(600px, 800px, 100dvh);
+}
+
+.shadow-top {
+  box-shadow: 0 -4px 6px -4px rgba(0, 0, 0, 0.2);
+}
