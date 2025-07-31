@@ -19,7 +19,7 @@ let storage = [
 app.get("/api/storage", urlencodedParser, (req, res) => {
   setTimeout(() => {
     res.json({ storage });
-  }, 1000);
+  }, 900);
 });
 
 app.post("/api/order", jsonParser, (req, res) => {
