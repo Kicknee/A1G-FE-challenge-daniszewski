@@ -1,4 +1,3 @@
-// hooks/useCart.ts
 import { useState, useMemo } from "react";
 import axios from "axios";
 import { getItemsFromCart, calculateTotal } from "../utils/cartCalculations";
