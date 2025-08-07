@@ -65,7 +65,7 @@ const OrderPage = () => {
         <Button
           variant="primary"
           onClick={onSubmit}
-          disabled={total === 0 || error}
+          disabled={total === 0 || isLoadingState}
         >
           {isLoadingState ? <LoadingSpinner /> : "Order"}
         </Button>
