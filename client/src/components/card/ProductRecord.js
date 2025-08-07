@@ -1,5 +1,5 @@
 import React from "react";
-import IconButton from "../ui/IconButton";
+import Button from "../ui/Button";
 
 const ProductRecord = ({ product, quantity, onChange }) => {
   const isOut = product.stock === 0;
@@ -32,12 +32,14 @@ const ProductRecord = ({ product, quantity, onChange }) => {
         <div className="fs-5 text-end" style={{ width: "3ch" }}>
           {quantity}
         </div>
-        <IconButton
-          icon="bi-dash-lg fw-bolder"
+        <Button
+          variant="icon"
+          icon="bi-dash-lg"
           onClick={() => onChange(product.name, -1)}
           disabled={isOut || quantity === 0}
         />
-        <IconButton
+        <Button
+          variant="icon"
           icon="bi-plus-lg"
           onClick={() => onChange(product.name, 1)}
           disabled={isOut || quantity >= product.stock}
