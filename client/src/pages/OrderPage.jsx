@@ -1,35 +1,46 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "../../services/fetchProducts";
-import Button from "../../components/ui/Button";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import {
   CardContainer,
   CardHeader,
   CardContent,
   CardFooter,
-  ProductRecord,
-  ProductListSkeleton,
-} from "../../components/card";
-import Alert from "../../components/Alert";
-import LoadingSpinner from "../../components/ui/LoadingSpinner";
-import { useCart } from "../../hooks/useCart";
+} from "../components/card";
+import { ProductListSkeleton, ProductRecord } from "../components/product";
+import LoadingSpinner from "../components/ui/LoadingSpinner";
+import Button from "../components/ui/Button";
+import Alert from "../components/Alert";
+
+import { useCart } from "../hooks/useCart";
+import { fetchProducts } from "../services/fetchProducts";
+import { getItemsFromCart } from "../utils/cartCalculations";
 
 const OrderPage = () => {
   const { data, isLoading, isFetching, isError } = useQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
-
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const { cart, total, error, setError, updateQuantity, submitOrder } = useCart(
-    data?.storage || []
-  );
+  const { cart, total, setCart, updateQuantity } = useCart();
 
   const isLoadingState = isLoading || isFetching;
 
-  const onSubmit = () => submitOrder(() => navigate("/success"));
+  const submitOrder = async () => {
+    try {
+      const items = getItemsFromCart(cart);
+      await axios.post("/api/order", { items });
+      setCart({});
+      navigate("/success");
+    } catch (err) {
+      setError(err.response?.data?.error || err.message || "Order failed");
+    }
+  };
 
   return (
     <CardContainer>
@@ -43,7 +54,7 @@ const OrderPage = () => {
             <ProductRecord
               key={product.name}
               product={product}
-              quantity={cart[product.name] || 0}
+              quantity={cart[product.name]?.quantity || 0}
               onChange={updateQuantity}
             />
           ))
@@ -64,7 +75,7 @@ const OrderPage = () => {
         )}
         <Button
           variant="primary"
-          onClick={onSubmit}
+          onClick={submitOrder}
           disabled={total === 0 || isLoadingState}
         >
           {isLoadingState ? <LoadingSpinner /> : "Order"}

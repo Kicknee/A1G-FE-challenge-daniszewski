@@ -1,4 +1,3 @@
-import React from "react";
 import { cva } from "class-variance-authority";
 import clsx from "clsx";
 
@@ -18,15 +17,15 @@ const buttonStyles = cva(
 );
 
 const Button = ({
-  onClick,
-  disabled = false,
-  children,
-  icon,
-  variant = "primary",
-  className = "",
   type = "button",
+  variant = "primary",
+  disabled = false,
+  className = "",
+  iconClass,
+  onClick,
+  children,
 }) => {
-  const isIconOnly = !!icon && !children;
+  const isIconOnly = !!iconClass && !children;
 
   return (
     <button
@@ -36,8 +35,8 @@ const Button = ({
       className={clsx(buttonStyles({ variant }), className)}
       style={isIconOnly ? { width: 42, height: 42 } : undefined}
     >
-      {icon && <i className={`bi ${icon}`} />}
-      {children && <span className={icon ? "ms-2" : ""}>{children}</span>}
+      {iconClass && <i className={`bi ${iconClass}`} />}
+      {children && <span className={iconClass ? "ms-2" : ""}>{children}</span>}
     </button>
   );
 };

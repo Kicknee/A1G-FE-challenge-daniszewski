@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import Button from "../../components/ui/Button";
+
 import { useNavigate } from "react-router-dom";
+
+import Button from "../components/ui/Button";
 import {
   CardContainer,
   CardHeader,
   CardContent,
   CardFooter,
-} from "../../components/card";
+} from "../components/card";
 
 const SuccessPage = () => {
   const navigate = useNavigate();
@@ -24,6 +26,8 @@ const SuccessPage = () => {
             src="images/fireworks.png"
             alt="Fireworks"
             className="img-fluid w-75 mx-auto success-firerwork"
+            loading="lazy"
+            aria-label="Fireworks illustration"
           />
         </picture>
         <h2 className="display-4 fw-semibold">Thank you!</h2>

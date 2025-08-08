@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Alert = ({ message, duration = 3000, clear = () => {}, animate }) => {
   const [visible, setVisible] = useState(false);

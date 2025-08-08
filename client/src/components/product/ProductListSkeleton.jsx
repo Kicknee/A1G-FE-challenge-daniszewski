@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProductListSkeleton = () => (
   <>
     {[...Array(5)].map((_, i) => (
