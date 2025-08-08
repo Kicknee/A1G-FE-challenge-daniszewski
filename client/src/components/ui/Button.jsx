@@ -24,6 +24,7 @@ const Button = ({
   iconClass,
   onClick,
   children,
+  ...props
 }) => {
   const isIconOnly = !!iconClass && !children;
 
@@ -34,6 +35,7 @@ const Button = ({
       disabled={disabled}
       className={clsx(buttonStyles({ variant }), className)}
       style={isIconOnly ? { width: 42, height: 42 } : undefined}
+      {...props}
     >
       {iconClass && <i className={`bi ${iconClass}`} />}
       {children && <span className={iconClass ? "ms-2" : ""}>{children}</span>}

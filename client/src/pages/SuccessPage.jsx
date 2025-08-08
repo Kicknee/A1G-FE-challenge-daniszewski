@@ -36,7 +36,9 @@ const SuccessPage = () => {
         </p>
       </CardContent>
       <CardFooter className="p-3 pb-2">
-        <Button onClick={() => navigate("/")}>Submit another order</Button>
+        <Button onClick={() => navigate("/")} aria-label="Submit another order">
+          Submit another order
+        </Button>
       </CardFooter>
     </CardContainer>
   );

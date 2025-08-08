@@ -27,12 +27,14 @@ const ProductRecord = ({ product, quantity, onChange }) => {
             iconClass="bi-dash-lg"
             onClick={() => onChange(product, -1)}
             disabled={isOut || quantity === 0}
+            aria-label="Decrease product"
           />
           <Button
             variant="icon"
             iconClass="bi-plus-lg"
             onClick={() => onChange(product, 1)}
             disabled={isOut || quantity >= product.stock}
+            aria-label="Increase product"
           />
         </ProductQuantityControls>
       </div>

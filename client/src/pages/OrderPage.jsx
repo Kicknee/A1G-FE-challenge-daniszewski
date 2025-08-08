@@ -77,6 +77,7 @@ const OrderPage = () => {
           variant="primary"
           onClick={submitOrder}
           disabled={total === 0 || isLoadingState}
+          aria-label="Submit order"
         >
           {isLoadingState ? <LoadingSpinner /> : "Order"}
         </Button>
