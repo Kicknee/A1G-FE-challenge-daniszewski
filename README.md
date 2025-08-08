@@ -52,7 +52,7 @@ Font being used in these screens is [Montserrat](https://fonts.google.com/specim
 
 - Fork this repo
 - Build a clean and well-structured solution
-- Send it to [frontend-marketing-challenge@auto1-group.com](mailto:frontend-marketing-challenge@auto1-group.com) as a zip container (please name is as A1G-FE-challenge-${your_name})
+- Send it to ***************** as a zip container (please name is as A1G-FE-challenge-${your_name})
 
 ## API Reference
 
